@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      width: 90%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      margin: 20px 0;
+      animation: fadeIn 4s ease-in-out;
+      line-height: 1.4;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background: white;
+      color: #ff4e50;
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff4e50;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);} 
+      to { opacity: 1; transform: translateY(0);} 
+    }
+
+    .heart {
+      position: fixed;
+      color: red;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    /* Extra mobile tweaks */
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>I'm Really Sorry ❤️</h1>
+  <p id="message">I never meant to hurt you... You mean everything to me 💕</p>
+  <button onclick="nextMessage()">Please Forgive Me 🥺</button>
+</div>
+
+<script>
+  const messages = [
+    "I miss your smile 😔",
+    "Life feels incomplete without you 💔",
+    "You are my everything ❤️",
+    "I promise to be better for us 💞",
+    "Please come back to me 🥺"
+  ];
+
+  let index = 0;
+
+  function nextMessage() {
+    if (index < messages.length) {
+      document.getElementById('message').innerText = messages[index];
+      index++;
+    } else {
+      alert('I love you forever ❤️');
+    }
+  }
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerText = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
